@@ -6,7 +6,7 @@ const TabNavigator = createBottomTabNavigator();
 
 const AppTabNavigation = () => {
   return (
-    <TabNavigator.Navigator screenOptions={stackConfig}>
+    <TabNavigator.Navigator>
       <TabNavigator.Screen
         name={TabRoutes.Home}
         component={Home}
