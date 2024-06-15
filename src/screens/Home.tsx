@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, Pressable, StyleSheet, View } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 import useIpData from '../hooks/useIpData';
 import LoadingButton from '../components/shared/LoadingButton';
@@ -8,8 +8,9 @@ import colors from '../common/colors';
 import IpInfoCard from '../components/Home/IpInfoCard';
 import { SCREEN_WIDTH } from '../common/constants';
 import images from '../assets/images';
+import { StackRoutes } from '../navigation/routes';
 
-const Home = () => {
+const Home = ({ navigation }) => {
 
   const {
     getIpData,
@@ -38,7 +39,7 @@ const Home = () => {
         <View style={styles.infoContainer}>
           <IpInfoCard title='IP Address' value={ipData?.ip} />
           <IpInfoCard title='Location' value={`${ipData?.city}, ${ipData?.country}`} />
-          <IpInfoCard title='ISP Provider' value={ipData?.connection?.isp} />
+          <IpInfoCard title='Internet Service Provider' value={ipData?.connection?.isp} />
         </View>
       </View>
 
@@ -48,9 +49,12 @@ const Home = () => {
         height={SCREEN_WIDTH / 1.6}
         data={Object.values(images)}
         renderItem={({ item }) => (
-          <View style={{ flex: 1 }}>
+          <Pressable
+            onPress={() => navigation.navigate(StackRoutes.Profile, { image: item, ipData })}
+            style={{ flex: 1 }}
+          >
             <Image style={styles.carouselImage} source={item} />
-          </View>
+          </Pressable>
         )}
       />
 

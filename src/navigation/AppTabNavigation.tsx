@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { TabRoutes } from './routes';
-import { Home } from '../screens';
+import HomeStack from './HomeStack';
 
 const TabNavigator = createBottomTabNavigator();
 
@@ -8,9 +8,9 @@ const AppTabNavigation = () => {
   return (
     <TabNavigator.Navigator>
       <TabNavigator.Screen
-        name={TabRoutes.Home}
-        component={Home}
-        options={{ headerTitle: 'Home' }}
+        name={TabRoutes.HomeTab}
+        component={HomeStack}
+        options={{ headerShown: false }}
       />
     </TabNavigator.Navigator>
   );
