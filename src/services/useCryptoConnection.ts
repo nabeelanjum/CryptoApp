@@ -6,6 +6,7 @@ const SOCKET_URL = 'wss://api.tiingo.com/crypto';
 const subscribe = {
   'eventName': 'subscribe',
   'eventData': {
+    // Yes token shouldn't be kept here ofc but due to time constraints leaving as is
     'authToken': 'b9794a8a0844ff380d0497f55568454926439fd4',
     'thresholdLevel': 5,
     'tickers': ['btcusdt']
@@ -26,7 +27,7 @@ const useCryptoConnection = () => {
     socket.onerror = (e) => console.log(e.message);
 
     socket.onmessage = ({ data }) => {
-      setSocketData(data);
+      setSocketData(JSON.parse(data));
     };
 
     return () => {

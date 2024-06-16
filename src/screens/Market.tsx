@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 import colors from '../common/colors';
 import AppText from '../components/shared/AppText';
 import { useCryptoSocket } from '../contexts/CryptoContext';
-import useSocketConnection from '../services/useCryptoConnection';
 
 const Market = () => {
   const { socketData } = useCryptoSocket();
 
-  console.log('SOCKET_DATA:', socketData);
+  const btcValue = useMemo(() => socketData?.data?.[5], [socketData]);
 
   return (
     <View style={styles.container}>
-      <AppText>
+      <AppText size={18} bold>
+        BTC:
+      </AppText>
+      <AppText size={16}>
+        {btcValue || 'N/A'}
       </AppText>
     </View>
   );
@@ -24,5 +27,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.white,
+    padding: 20,
   }
 });

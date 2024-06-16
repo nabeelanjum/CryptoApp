@@ -11,11 +11,12 @@ const AppTabNavigation = () => {
       <TabNavigator.Screen
         name={TabRoutes.HomeTab}
         component={HomeStack}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, title: 'Home' }}
       />
       <TabNavigator.Screen
         name={TabRoutes.Live_Market}
         component={Market}
+        options={{ title: 'Market' }}
       />
     </TabNavigator.Navigator>
   );
