@@ -1,7 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { StackRoutes } from './routes';
-import Profile from '../screens/Profile';
-import { Home } from '../screens';
+import { Home, Profile } from '../screens';
 
 const StackNavigator = createStackNavigator();
 
