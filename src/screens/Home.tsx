@@ -7,7 +7,7 @@ import AppTextInput from '../components/shared/AppTextInput';
 import colors from '../common/colors';
 import IpInfoCard from '../components/Home/IpInfoCard';
 import { SCREEN_WIDTH } from '../common/constants';
-import images from '../assets/images';
+import { sliderImages } from '../assets/images';
 import { StackRoutes } from '../navigation/routes';
 
 const Home = ({ navigation }) => {
@@ -47,7 +47,7 @@ const Home = ({ navigation }) => {
         mode='parallax'
         width={SCREEN_WIDTH}
         height={SCREEN_WIDTH / 1.6}
-        data={Object.values(images)}
+        data={sliderImages}
         renderItem={({ item }) => (
           <Pressable
             onPress={() => navigation.navigate(StackRoutes.Profile, { image: item, ipData })}

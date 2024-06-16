@@ -5,6 +5,10 @@ const images = {
   cyp4: require('./cyp4.jpg'),
   cyp5: require('./cyp5.jpg'),
   cyp6: require('./cyp6.jpg'),
+  homeIcon: require('./homeIcon.png'),
+  stockIcon: require('./stockIcon.png'),
 }
+
+export const sliderImages = Object.values(images).slice(0, 5);
 
 export default images;
