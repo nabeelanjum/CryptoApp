@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import Toast from 'react-native-toast-message';
 import { fetchIpData } from '../services/IpService';
 
 const useIpData = () => {
@@ -12,7 +13,11 @@ const useIpData = () => {
       const resp = await fetchIpData(ip);
       setIpData(resp);
     } catch (e) {
-      console.error(e)
+      console.error(e);
+      Toast.show({
+        type: 'error',
+        text1: e.toString(),
+      });
     } finally {
       setLoading(false);
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import Toast from 'react-native-toast-message';
 import RootNavigation from './navigation';
 import { CryptoProvider } from './contexts/CryptoContext';
 
@@ -9,6 +10,7 @@ const App = () => {
       <CryptoProvider>
         <RootNavigation />
       </CryptoProvider>
+      <Toast />
     </View>
   );
 }

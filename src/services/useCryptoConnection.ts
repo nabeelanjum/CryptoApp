@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useCryptoSocket } from '../contexts/CryptoContext';
+import Toast from 'react-native-toast-message';
 
 const SOCKET_URL = 'wss://api.tiingo.com/crypto';
 
@@ -24,7 +25,13 @@ const useCryptoConnection = () => {
 
     socket.onopen = () => socket.send(JSON.stringify(subscribe));
 
-    socket.onerror = (e) => console.log(e.message);
+    socket.onerror = (e) => {
+      console.error(e.message);
+      Toast.show({
+        type: 'error',
+        text1: e.message
+      });
+    }
 
     socket.onmessage = ({ data }) => {
       setSocketData(JSON.parse(data));
