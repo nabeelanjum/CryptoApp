@@ -51,7 +51,7 @@ const Home = ({ navigation }) => {
         renderItem={({ item }) => (
           <Pressable
             onPress={() => navigation.navigate(StackRoutes.Profile, { image: item, ipData })}
-            style={{ flex: 1 }}
+            style={({ pressed }) => [{ flex: 1 }, pressed && { opacity: 0.6 }]}
           >
             <Image style={styles.carouselImage} source={item} />
           </Pressable>
